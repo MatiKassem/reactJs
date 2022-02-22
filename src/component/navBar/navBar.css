@@ -1,0 +1,22 @@
+.nav{
+    height: 200px;
+
+}
+
+.navBar{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(189, 133, 60);
+    margin: 0;
+    padding: 20px;
+    list-style: none;
+
+}
+.navBarItem{
+    color: darkblue;
+    font-family: fantasy;
+    font-size: medium;
+    text-decoration: none;
+
+
+}
