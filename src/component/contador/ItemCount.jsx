@@ -3,13 +3,15 @@ import './itemCount.css';
 
 
 
-function ItemCount(){
-const [count, setCount] = useState (0);
+function ItemCount({stock, inicial}){
+const [count, setCount] = useState (inicial);
     
-const handleCount = ()=>{
+const handleCountAdd = ()=>{
+    if(count < stock)
         setCount(count+1)
         }
-const handleCount1 = ()=>{
+const handleCountMinus = ()=>{
+    if(count > inicial)
         setCount(count-1)
         }
 
@@ -19,8 +21,8 @@ let mostrarEnConsola = ()=> console.log(count);
     return(
         <div>
         <label className='itemContenedor'>{count}</label>
-        <button className='itemContenedor' onClick={handleCount}>+</button>
-        <button className='itemContenedor' onClick={handleCount1}>-</button>
+        <button className='itemContenedor' onClick={handleCountAdd}>+</button>
+        <button className='itemContenedor' onClick={handleCountMinus}>-</button>
         <button className='itemContenedor' onClick={mostrarEnConsola}>Agregar al Carrito</button>
         </div>
     )
