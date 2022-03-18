@@ -1,9 +1,10 @@
-import { useState } from 'react';
+ import { useState } from 'react';
 import './itemCount.css';
+import { Button } from 'react-bootstrap';
 
 
 
-function ItemCount({stock, inicial}){
+function ItemCount({stock, inicial, onAdd}){
 const [count, setCount] = useState (inicial);
     
 const handleCountAdd = ()=>{
@@ -15,15 +16,17 @@ const handleCountMinus = ()=>{
         setCount(count-1)
         }
 
-let mostrarEnConsola = ()=> console.log(count);
+const agregar = () => {
+    onAdd( count )
+}
 
 
     return(
         <div>
         <label className='itemContenedor'>{count}</label>
-        <button className='itemContenedor' onClick={handleCountAdd}>+</button>
-        <button className='itemContenedor' onClick={handleCountMinus}>-</button>
-        <button className='itemContenedor' onClick={mostrarEnConsola}>Agregar al Carrito</button>
+        <Button className='itemContenedor btn btn-primary' onClick={handleCountAdd}>+</Button>
+        <Button className='itemContenedor btn btn-primary' onClick={handleCountMinus}>-</Button>
+        <Button className='itemContenedor btn btn-primary' onClick={ agregar }>Agregar al Carrito</Button>
         </div>
     )
 }
