@@ -5,16 +5,20 @@ import ItemDetailContainer from './component/componenteContenedor/itemDetailCont
 import ItemListContainer from './component/componenteContenedor/itemListContainer/itemListContainer';
 import Navbar from './component/navBar/navBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CartContextProvider from "./component/context/cartContext";
+import Cart from "./component/cartWidget/cart";
+
 
 function App() {
   return (
-    <BrowserRouter>
+      <CartContextProvider>
+       <BrowserRouter>
      <div className="App">
        <Navbar> 
        <CartWidget/>
        </Navbar>   
       <Routes>
-         <Route path="/cart" element={<CartWidget/>}/>
+         <Route path="/cart" element={<Cart/>}/>
         <Route path="/detalle/:detalleId" element={ <ItemDetailContainer/> }/> 
         <Route path="/" element={<ItemListContainer greeting={"hola soy el contenedor principal"}/> }/>
         <Route path="/categoria/:categoriaId" element={<ItemListContainer greeting={"hola soy el contenedor principal"}/> }/>
@@ -22,6 +26,7 @@ function App() {
       </Routes>
     </div>
     </BrowserRouter>
+    </CartContextProvider>
   );
 }
 

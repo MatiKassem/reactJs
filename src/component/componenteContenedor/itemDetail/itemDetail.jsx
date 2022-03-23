@@ -3,16 +3,22 @@ import ItemCount from "../../contador/ItemCount";
 
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useCartContext } from "../../context/cartContext";
 
 
 const ItemDetail = ({producto}) =>{
 
     const [count, setCount] = useState(null)
+
+    const {agregarCart} = useCartContext()
+
     const onAdd = (cant)=>{
         console.log(cant)
         setCount(cant)
+        agregarCart({...producto, cantidad: cant})
     }
-
+    
+    
     return(
     <div>
      <img src={producto.imagen} alt={producto.name} />
